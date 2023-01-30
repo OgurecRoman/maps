@@ -1,9 +1,10 @@
 import requests
 import sys
 
+from PyQt5.Qt import Qt
 from PyQt5 import uic
-from PyQt5.QtWidgets import QMainWindow, QApplication
-from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import QMainWindow, QApplication, QSpinBox
+from PyQt5.QtGui import QPixmap, QKeyEvent
 
 
 class MyWidget(QMainWindow):
@@ -19,7 +20,7 @@ class MyWidget(QMainWindow):
         params = {
             'l': 'sat',
             'll': coords,
-            'z': self.n.text()
+            'z': self.zoom.text()
         }
         response = requests.get(self.link, params=params)
         with open('test.png', 'wb') as file:
@@ -27,6 +28,16 @@ class MyWidget(QMainWindow):
 
         self.pixmap = QPixmap('test.png')
         self.map.setPixmap(self.pixmap)
+
+    def keyPressEvent(self, event: QKeyEvent):
+        if event.key() == Qt.Key_PageUp:
+            new_value = int(self.zoom.text()) + 1
+            self.zoom.setValue(new_value)
+            self.get_map()
+        if event.key() == Qt.Key_PageDown:
+            new_value = int(self.zoom.text()) - 1
+            self.zoom.setValue(new_value)
+            self.get_map()
 
 
 if __name__ == '__main__':

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>987</width>
-    <height>836</height>
+    <height>538</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,9 +17,9 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>10</y>
-     <width>721</width>
-     <height>811</height>
+     <y>20</y>
+     <width>701</width>
+     <height>501</height>
     </rect>
    </property>
    <property name="text">
@@ -90,7 +90,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QSpinBox" name="n">
+  <widget class="QSpinBox" name="zoom">
    <property name="geometry">
     <rect>
      <x>730</x>
@@ -98,6 +98,9 @@
      <width>251</width>
      <height>22</height>
     </rect>
+   </property>
+   <property name="maximum">
+    <number>17</number>
    </property>
   </widget>
  </widget>
